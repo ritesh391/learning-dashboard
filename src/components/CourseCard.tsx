@@ -10,7 +10,7 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({ course, index }: CourseCardProps) {
-  const IconComponent = (Icons as Record<string, React.ComponentType<{ size?: number; color?: string }>>)[course.icon_name] || Icons.BookOpen
+  const IconComponent = (Icons as Record<string, React.ElementType>)[course.icon_name] || Icons.BookOpen
 
   const statusLabel =
     course.progress >= 100 ? 'Completed' :
