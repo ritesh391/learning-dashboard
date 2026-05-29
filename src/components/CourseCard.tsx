@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import * as Icons from 'lucide-react'
+import { BookOpen, Code2, FileCode, Layers, Database, LucideIcon } from 'lucide-react'
 import { Course } from '@/types'
 
 interface CourseCardProps {
@@ -9,8 +9,16 @@ interface CourseCardProps {
   index: number
 }
 
+const iconMap: Record<string, LucideIcon> = {
+  Code2,
+  FileCode,
+  Layers,
+  Database,
+  BookOpen,
+}
+
 export default function CourseCard({ course, index }: CourseCardProps) {
-  const IconComponent = (Icons as Record<string, React.ElementType>)[course.icon_name] || Icons.BookOpen
+  const IconComponent = iconMap[course.icon_name] || BookOpen
 
   const statusLabel =
     course.progress >= 100 ? 'Completed' :
